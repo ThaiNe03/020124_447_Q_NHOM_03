@@ -64,9 +64,18 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::post('/create-room',[RoomController::class, 'store']);
     Route::put('/update-room',[RoomController::class, 'update']);
     Route::delete('/delete-room/{id}', [RoomController::class, 'destroy']);
+<<<<<<< HEAD
     //product
     Route::get('/list-product',[ProductController::class,'index']);
     Route::put('/change-status', [ProductController::class, 'change']);
+=======
+    // Product
+    Route::get('/list-product',[ProductController::class,'index']);
+    Route::put('/change-status', [ProductController::class, 'change']);
+    // Blog
+    Route::get('/list-prodbloguct',[ProductController::class,'index']);
+
+>>>>>>> b6c9bb129c26db66902e5f24344ac69c9c910be4
 });
 
 
