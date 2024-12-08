@@ -17,10 +17,14 @@ class Kernel extends HttpKernel
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
 <<<<<<< HEAD
+<<<<<<< HEAD
         // \Fruitcake\Cors\HandleCors::class,
 =======
         \Fruitcake\Cors\HandleCors::class,
 >>>>>>> 3de6771 (Initial commit)
+=======
+        // \Fruitcake\Cors\HandleCors::class,
+>>>>>>> bf66bb5 (Initial commit)
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,

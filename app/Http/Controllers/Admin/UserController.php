@@ -75,10 +75,14 @@ class UserController extends Controller
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function loginAdmin(LoginRequest $request)
 =======
     public function loginAdmin(loginRequest $request)
 >>>>>>> 3de6771 (Initial commit)
+=======
+    public function loginAdmin(loginRequest $request)
+>>>>>>> bf66bb5 (Initial commit)
     {
         $login = [
             'email' => $request->email,
@@ -131,10 +135,14 @@ class UserController extends Controller
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function loginStaff(LoginRequest $request)
 =======
     public function loginStaff(loginRequest $request)
 >>>>>>> 3de6771 (Initial commit)
+=======
+    public function loginStaff(loginRequest $request)
+>>>>>>> bf66bb5 (Initial commit)
     {
         $login = [
             'email' => $request->email,

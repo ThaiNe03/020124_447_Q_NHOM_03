@@ -17,6 +17,7 @@ class Room extends Model
         'more_service',
     ];
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function roomCategory()
     {
         return $this->belongsTo(RoomType::class, 'id_room_categories');
@@ -28,4 +29,6 @@ class Room extends Model
     }
 =======
 >>>>>>> 3de6771 (Initial commit)
+=======
+>>>>>>> bf66bb5 (Initial commit)
 }

@@ -18,6 +18,7 @@ class RoomType extends Model
         'status'
     ];
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function rooms()
     {
         return $this->hasMany(Room::class, 'id_room_categories');
@@ -25,4 +26,6 @@ class RoomType extends Model
 
 =======
 >>>>>>> 3de6771 (Initial commit)
+=======
+>>>>>>> bf66bb5 (Initial commit)
 }

@@ -35,10 +35,14 @@ class RoomRequest extends FormRequest
             'room_name.*'        => 'Tên Phòng Phải Từ 3 Ký Tự',
             'price.*'             => 'Giá mặc định không được để trống',
 <<<<<<< HEAD
+<<<<<<< HEAD
             'id_room_categories.*' => 'Loại Phòng không được để trống',
 =======
             'id_room_categories.*'          => 'Loại Phòng không được để trống',
 >>>>>>> 3de6771 (Initial commit)
+=======
+            'id_room_categories.*'          => 'Loại Phòng không được để trống',
+>>>>>>> bf66bb5 (Initial commit)
             'status.*'            => 'Tình trạng không được để trống',
         ];
     }
