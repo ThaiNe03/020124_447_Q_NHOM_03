@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { Table, Button, Input, Space, Modal, Form } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2';
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import './style.scss';
 
 // const { Search } = Input;
 
 const User = () => {
-  const token = Cookies.get("token");
+  const token = Cookies.get('token');
   const [form] = Form.useForm();
 
   const [name, setName] = useState('');
@@ -17,7 +17,6 @@ const User = () => {
   const [password, setPassWord] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-
 
   const [listUser, setListUser] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,11 +59,11 @@ const User = () => {
 
   const getUserAPI = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_DOMAIN}api/admin/list-staff`,{
+      const response = await axios.get(`${import.meta.env.VITE_DOMAIN}api/admin/list-staff`, {
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${token}`,
-        }
+        },
       });
       response.data ? setListUser(response.data[0]) : setListUser([]);
     } catch (error) {
@@ -75,8 +74,6 @@ const User = () => {
   useEffect(() => {
     getUserAPI();
   }, []);
-
- 
 
   const showModal = () => {
     form.resetFields();
@@ -106,7 +103,7 @@ const User = () => {
       email,
       password,
       phone,
-      address
+      address,
     };
 
     try {
@@ -114,7 +111,7 @@ const User = () => {
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${token}`,
-        }
+        },
       });
       Swal.fire({
         position: 'center',
@@ -132,7 +129,7 @@ const User = () => {
         text: error.response.data.message,
         icon: 'error',
       });
-    } 
+    }
   };
 
   const handleDelete = async (id) => {
@@ -159,10 +156,10 @@ const User = () => {
         text: error.response.data.message,
         icon: 'error',
       });
-    } 
+    }
   };
 
-  
+  console.log(listUser);
 
   return (
     <>
@@ -197,11 +194,7 @@ const User = () => {
             <Input type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </Form.Item>
           <Form.Item label="Phone Number" name="phoneNumber" required>
-            <Input
-              placeholder="Enter phone number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
+            <Input placeholder="Enter phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
           </Form.Item>
           <Form.Item label="Password" name="password" required>
             <Input.Password
@@ -210,12 +203,8 @@ const User = () => {
               onChange={(e) => setPassWord(e.target.value)}
             />
           </Form.Item>
-          <Form.Item label="Address" name="address" >
-            <Input
-              placeholder="Enter address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
+          <Form.Item label="Address" name="address">
+            <Input placeholder="Enter address" value={address} onChange={(e) => setAddress(e.target.value)} />
           </Form.Item>
         </Form>
       </Modal>
