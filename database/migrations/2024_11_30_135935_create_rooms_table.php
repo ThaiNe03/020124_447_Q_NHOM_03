@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('room_name');
             $table->integer('price');
             $table->integer('status');
-            $table->integer('id_room_categories');
+            $table->unsignedBigInteger('id_room_categories');
             $table->longText('more_service')->nullable();
             $table->timestamps();
+        
+            $table->foreign('id_room_categories')->references('id')->on('room_categories')->onDelete('cascade');
         });
     }
 

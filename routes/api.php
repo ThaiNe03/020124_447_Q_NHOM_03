@@ -10,18 +10,13 @@ use App\HTTP\Controllers\Admin\ServiceController;
 use App\HTTP\Controllers\Admin\ProductController;
 
 // Staff
+use App\Http\Controllers\Staff\BlogController;
 use App\Http\Controllers\Staff\RoomController;
+use App\Models\Blog;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+// Main
+use App\Http\Controllers\Main\CustomerController;
+use App\Http\Controllers\RentalDetailController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -48,6 +43,10 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-service',[ServiceController::class,'index']);
     Route::post('/create-service',[ServiceController::class,'store']);
     Route::delete('/delete-service/{id}',[ServiceController::class,'destroy']);
+    // Category product
+    Route::get('/list-cate-product',[ProductController::class,'listCate']);
+    Route::post('/create-cate-product',[ProductController::class,'storeCate']);
+    Route::delete('/delete-cate-product/{id}',[ProductController::class,'destroyCate']);
     // Product
     Route::get('/list-product',[ProductController::class,'index']);
     Route::post('/create-product',[ProductController::class,'store']);
@@ -55,6 +54,7 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::post('/edit-product/{id}',[ProductController::class,'update']);
     Route::delete('/delete-product/{id}',[ProductController::class,'destroy']);
 });
+
 // Staff
 Route::post('/staff/login',[UserController::class,'loginStaff']);
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
@@ -62,7 +62,8 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     // Room
     Route::get('/list-room', [RoomController::class, 'getData']);
     Route::post('/create-room',[RoomController::class, 'store']);
-    Route::put('/update-room',[RoomController::class, 'update']);
+    Route::get('/edit-room/{id}',[RoomController::class,'edit']);
+    Route::put('/edit-room/{id}',[RoomController::class, 'update']);
     Route::delete('/delete-room/{id}', [RoomController::class, 'destroy']);
 <<<<<<< HEAD
     //product
@@ -73,9 +74,35 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-product',[ProductController::class,'index']);
     Route::put('/change-status', [ProductController::class, 'change']);
     // Blog
+<<<<<<< HEAD
     Route::get('/list-prodbloguct',[ProductController::class,'index']);
 
 >>>>>>> b6c9bb129c26db66902e5f24344ac69c9c910be4
+=======
+    Route::get('/list-blog',[BlogController::class,'index']);
+    Route::post('/create-blog',[BlogController::class,'store']);
+    Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
+    Route::put('/edit-blog/{id}',[BlogController::class,'update']);
+    Route::delete('/delete-blog',[BlogController::class,'destroy']);
+    // Rental room detail
+    Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
+>>>>>>> 163989666b769ef694cf182baf20f5c3928731f4
 });
 
+Route::post('/register', [CustomerController::class, 'register']);
+Route::post('/login', [CustomerController::class, 'login']);
 
+// Main
+Route::get('/list-room', [RoomController::class, 'getData']);
+Route::get('/edit-room/{id}',[RoomController::class,'edit']);
+Route::get('/list-service',[ServiceController::class,'index']);
+Route::get('/list-product',[ProductController::class,'index']);
+
+
+
+// Main sanctum
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/logout',[CustomerController::class,'logout']);
+    Route::post('/choose-room',[CustomerController::class,'chooseRoom']);
+    Route::post('/booking',[CustomerController::class,'booking']);
+});

@@ -17,19 +17,37 @@ class Kernel extends HttpKernel
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
 <<<<<<< HEAD
+<<<<<<< HEAD
         // \Fruitcake\Cors\HandleCors::class,
 =======
         \Fruitcake\Cors\HandleCors::class,
 >>>>>>> b6c9bb129c26db66902e5f24344ac69c9c910be4
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        // \Fruitcake\Cors\HandleCors::class,
+=======
+        \Fruitcake\Cors\HandleCors::class,
+>>>>>>> 3de6771 (Initial commit)
+=======
+        // \Fruitcake\Cors\HandleCors::class,
+>>>>>>> bf66bb5 (Initial commit)
+=======
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
+>>>>>>> 163989666b769ef694cf182baf20f5c3928731f4
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 <<<<<<< HEAD
+<<<<<<< HEAD
         \App\Http\Middleware\cors::class,
 =======
         \App\Http\Middleware\cors::class,//cors added here
 >>>>>>> b6c9bb129c26db66902e5f24344ac69c9c910be4
+=======
+        \App\Http\Middleware\cors::class,
+>>>>>>> 163989666b769ef694cf182baf20f5c3928731f4
     ];
 
     /**

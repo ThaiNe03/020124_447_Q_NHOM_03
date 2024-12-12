@@ -27,16 +27,13 @@ class ProductRequest extends FormRequest
             'price'=>'required',
             'id_category'=>'required',
             'status'=>'required',
-            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image'=>'required'
         ];
     }
     public function messages()
     {
         return[
-            'required'=>':attribute không được để trống',
-            'image'=>':attribute không phải là ảnh',
-            'mimes'=>':attribute phải định dạng jpeg,png,jpg,gif',
-            'max'=>':attribute quá kích thước'
+            'required'=>':attribute không được để trống'
         ];
     }
     public function attributes()
