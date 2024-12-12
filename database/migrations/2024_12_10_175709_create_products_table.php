@@ -16,10 +16,12 @@ return new class extends Migration
             $table->integer('id_user');
             $table->string('name');
             $table->string('price');
-            $table->integer('id_category');
+            $table->unsignedBigInteger('id_category');
             $table->integer('status')->comment = '1:còn 0:tạm hết';
             $table->string('image')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_category')->references('id')->on('product_categories')->onDelete('cascade');
         });
     }
 

@@ -22,20 +22,14 @@ class RentalDatailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_room'     => 'required|exists:rooms,id',
-            'date'          =>   'required',
-            'status'   => 'required|boolean',
-            'note'               => 'required|nullable',
+            'id_room'  => 'required|exists:rooms,id'
         ];
     }
-
     public function messages()
     {
         return [
-            'id_room.*'        => 'Id không được để trống',
-            'date.*'    => 'Ngày không được để trống',
-            'status.*'    => 'Tình trạng không được để trống',
-            'img.*'            => 'Hình ảnh không được để trống',
+            'id_room.required'  => 'Id phòng không được để trống',
+            'id_room.exists'    => 'Id phòng không tồn tại',
         ];
     }
 }

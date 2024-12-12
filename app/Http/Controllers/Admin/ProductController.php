@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
+use App\Models\ProductCate;
 
 class ProductController extends Controller
 {
@@ -25,6 +26,22 @@ class ProductController extends Controller
             return response()->json(["Create product success."]);
         }else{
             return response()->json(["Create product error."]);
+        }
+    }
+    public function storeCate(Request $request)
+    {
+        $validatedData = $request->validate(
+            ['CateName' => 'required'],
+            ['CateName.required' => 'Tên danh mục không được để trống.']
+        );
+        try {
+            if (ProductCate::create($validatedData)) {
+                return response()->json(["message" => "Create success."], 201);
+            } else {
+                return response()->json(["message" => "Create error."], 500);
+            }
+        } catch (\Exception $e) {
+            return response()->json(["message" => "Error: " . $e->getMessage()], 500);
         }
     }
     public function show(string $id)
@@ -48,10 +65,18 @@ class ProductController extends Controller
     }
     public function destroy(string $id)
     {
-        if(Product::where('id',$id)->delete()){
+        if(ProductCate::where('id',$id)->delete()){
             return response()->json(["Delete product success."]);
         }else{
             return response()->json(["Delete product error."]);
+        }
+    }
+    public function destroyCate(string $id)
+    {
+        if(ProductCate::where('id',$id)->delete()){
+            return response()->json(["Delete success."]);
+        }else{
+            return response()->json(["Delete error."]);
         }
     }
     public function change(Request $request)
@@ -75,5 +100,10 @@ class ProductController extends Controller
                 'message' => "Change status error!"
             ]);
         }
+    }
+    public function listCate()
+    {
+        $data = ProductCate::all();
+        return response()->json([$data]);
     }
 }

@@ -16,7 +16,7 @@ class UserController extends Controller
     public $successStatus = 200;
     public function index()
     {
-        $data = Auth::guard('user')->user();
+        $data = Auth::user();
         return response()->json([$data]);
     }
     public function create()
@@ -76,6 +76,7 @@ class UserController extends Controller
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function loginAdmin(LoginRequest $request)
 =======
     public function loginAdmin(loginRequest $request)
@@ -83,6 +84,9 @@ class UserController extends Controller
 =======
     public function loginAdmin(loginRequest $request)
 >>>>>>> bf66bb5 (Initial commit)
+=======
+    public function loginAdmin(LoginRequest $request)
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
     {
         $login = [
             'email' => $request->email,
@@ -136,6 +140,7 @@ class UserController extends Controller
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function loginStaff(LoginRequest $request)
 =======
     public function loginStaff(loginRequest $request)
@@ -143,6 +148,9 @@ class UserController extends Controller
 =======
     public function loginStaff(loginRequest $request)
 >>>>>>> bf66bb5 (Initial commit)
+=======
+    public function loginStaff(LoginRequest $request)
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
     {
         $login = [
             'email' => $request->email,

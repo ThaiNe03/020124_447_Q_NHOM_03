@@ -21,6 +21,9 @@ class RoomController extends Controller
         $data = $request->all();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
         if(Room::create($data))
         {
             return response()->json([
@@ -38,6 +41,7 @@ class RoomController extends Controller
     {
         $data = Room::find($id);
         return response()->json([$data]);
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> bf66bb5 (Initial commit)
@@ -58,6 +62,20 @@ class RoomController extends Controller
 >>>>>>> 3de6771 (Initial commit)
 =======
 >>>>>>> bf66bb5 (Initial commit)
+=======
+        if(Room::create($data))
+        {
+            return response()->json([
+                'status'    =>  true,
+                'message'   =>  'Đã tạo mới phòng thành công!'
+            ]);
+        } else {
+            return response()->json([
+                'status'    =>  false,
+                'message'   =>  'Lỗi'
+            ]);
+        }
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
     }
     public function update(Request $request)
     {

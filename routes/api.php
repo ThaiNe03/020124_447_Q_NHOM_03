@@ -43,6 +43,10 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-service',[ServiceController::class,'index']);
     Route::post('/create-service',[ServiceController::class,'store']);
     Route::delete('/delete-service/{id}',[ServiceController::class,'destroy']);
+    // Category product
+    Route::get('/list-cate-product',[ProductController::class,'listCate']);
+    Route::post('/create-cate-product',[ProductController::class,'storeCate']);
+    Route::delete('/delete-cate-product/{id}',[ProductController::class,'destroyCate']);
     // Product
     Route::get('/list-product',[ProductController::class,'index']);
     Route::post('/create-product',[ProductController::class,'store']);
@@ -70,12 +74,8 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
     Route::put('/edit-blog/{id}',[BlogController::class,'update']);
     Route::delete('/delete-blog',[BlogController::class,'destroy']);
-    // Chi tiết thuê phòng
-    Route::get('/list-rental-detail', [RentalDetailController::class, 'getData']);
+    // Rental room detail
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
-    Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'edit']);
-    Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'update']);
-    Route::get('/delete-rental-detail', [RentalDetailController::class, 'destroy']);
 });
 
 Route::post('/register', [CustomerController::class, 'register']);
@@ -87,8 +87,11 @@ Route::get('/edit-room/{id}',[RoomController::class,'edit']);
 Route::get('/list-service',[ServiceController::class,'index']);
 Route::get('/list-product',[ProductController::class,'index']);
 
+
+
 // Main sanctum
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logout',[CustomerController::class,'logout']);
+    Route::post('/choose-room',[CustomerController::class,'chooseRoom']);
     Route::post('/booking',[CustomerController::class,'booking']);
 });

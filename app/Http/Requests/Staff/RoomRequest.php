@@ -32,6 +32,7 @@ class RoomRequest extends FormRequest
     public function messages()
     {
         return [
+<<<<<<< HEAD
             'room_name.*'        => 'Tên Phòng Phải Từ 3 Ký Tự',
             'price.*'             => 'Giá mặc định không được để trống',
 <<<<<<< HEAD
@@ -44,6 +45,12 @@ class RoomRequest extends FormRequest
             'id_room_categories.*'          => 'Loại Phòng không được để trống',
 >>>>>>> bf66bb5 (Initial commit)
             'status.*'            => 'Tình trạng không được để trống',
+=======
+            'room_name.*'               => 'Tên Phòng Phải Từ 3 Ký Tự',
+            'price.*'                   => 'Giá mặc định không được để trống',
+            'id_room_categories.*'      => 'Loại Phòng không được để trống',
+            'status.*'                  => 'Tình trạng không được để trống',
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
         ];
     }
 }

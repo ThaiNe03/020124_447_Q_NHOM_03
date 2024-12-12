@@ -34,6 +34,7 @@ class LoginRequest extends FormRequest
         return [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             'required'=>':attribute không được để trống',
 =======
             'required'=>':attribute Không được để trống',
@@ -41,6 +42,9 @@ class LoginRequest extends FormRequest
 =======
             'required'=>':attribute Không được để trống',
 >>>>>>> bf66bb5 (Initial commit)
+=======
+            'required'=>':attribute Không được để trống',
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
             'email.email' => ':attribute sai định dạng'
         ];
     }

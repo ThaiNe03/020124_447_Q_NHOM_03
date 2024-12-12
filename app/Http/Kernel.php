@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrustProxies::class,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         // \Fruitcake\Cors\HandleCors::class,
 =======
         \Fruitcake\Cors\HandleCors::class,
@@ -25,6 +26,8 @@ class Kernel extends HttpKernel
 =======
         // \Fruitcake\Cors\HandleCors::class,
 >>>>>>> bf66bb5 (Initial commit)
+=======
+>>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
