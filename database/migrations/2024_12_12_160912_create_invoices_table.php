@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_rental_detail');
+            $table->integer('id_room');
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
             $table->string('phone');
             $table->string('paymentMethod')->default(1)->comment = '1:tt 0:gt';
             $table->string('note')->nullable();
+            $table->integer('total');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_rental_detail')->references('id')->on('rental_details')->onDelete('cascade');
         });
     }
 

@@ -67,13 +67,13 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::delete('/delete-room/{id}', [RoomController::class, 'destroy']);
     // Product
     Route::get('/list-product',[ProductController::class,'index']);
-    Route::put('/change-status', [ProductController::class, 'change']);
+    Route::put('/change-status/{id}', [ProductController::class, 'change']);
     // Blog
     Route::get('/list-blog',[BlogController::class,'index']);
     Route::post('/create-blog',[BlogController::class,'store']);
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
     Route::put('/edit-blog/{id}',[BlogController::class,'update']);
-    Route::delete('/delete-blog',[BlogController::class,'destroy']);
+    Route::delete('/delete-blog/{id}',[BlogController::class,'destroy']);
     // Rental room detail
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
 });
@@ -86,7 +86,6 @@ Route::get('/list-room', [RoomController::class, 'getData']);
 Route::get('/edit-room/{id}',[RoomController::class,'edit']);
 Route::get('/list-service',[ServiceController::class,'index']);
 Route::get('/list-product',[ProductController::class,'index']);
-
 
 
 // Main sanctum

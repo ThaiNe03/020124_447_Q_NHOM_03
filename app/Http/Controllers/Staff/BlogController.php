@@ -21,7 +21,7 @@ class BlogController extends Controller
         {
             return response()->json([
                 'status'    =>  true,
-                'message'   =>  'Success create!'
+                'message'   =>  'Create success!'
             ]);
         } else {
             return response()->json([
@@ -51,13 +51,13 @@ class BlogController extends Controller
             ]);
         }
     }
-    public function destroy($id)
+    public function destroy(string $id)
     {
         if(Blog::find($id)->delete())
         {
             return response()->json([
                 'status'    =>  true,
-                'message'   =>  'Đã xoá phòng thành công!'
+                'message'   =>  'Đã xoá bài viết thành công!'
             ]);
         } else {
             return response()->json([

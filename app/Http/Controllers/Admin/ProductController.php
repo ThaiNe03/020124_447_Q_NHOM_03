@@ -74,20 +74,17 @@ class ProductController extends Controller
     public function destroyCate(string $id)
     {
         if(ProductCate::where('id',$id)->delete()){
-            return response()->json(["Delete success."]);
+            return response()->json(["Delete category success."]);
         }else{
-            return response()->json(["Delete error."]);
+            return response()->json(["Delete category error."]);
         }
     }
-    public function change(Request $request)
+    public function change(string $id)
     {
-        $product = Product::find($request->id);
+        $product = Product::find($id);
         if($product) {
-            if($product->status == 1) {
-                $product->status = 1;
-            } else {
-                $product->status = 0;
-            }
+            $product->status = $product->status == 1 ? 0 : 1;
+
             $product->save();
 
             return response()->json([

@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\RentalDetail;
+use App\Models\Invoices;
 
 class CustomerController extends Controller
 {
@@ -116,15 +117,46 @@ class CustomerController extends Controller
     }
     public function booking(Request $request)
     {
-        $user = Auth()->user();
-        $pricePerRoom = Room::find($availableRooms->first()->room_id)->price;
-        $days = $DueDate->diffInDays($IssueDate);
-        $totalPrice = $pricePerRoom * $days * $quantity;
+        $id_user = Auth()->user()->id;
+        $id_room = $request->id_room;
+        $IssueDate = Carbon::parse($request->IssueDate);
+        $receive = $IssueDate->format('Y/m/d');
+        $DueDate = Carbon::parse($request->DueDate);
+        $back = $DueDate->format('Y/m/d');
+        $firstName = $request->firstName;
+        $lastName = $request->lastName;
+        $email = $request->email;
+        $phone = $request->phone;
+        $paymentMethod = $request->paymentMethod ?? 1;
+
+        $days = $IssueDate->diffInDays($DueDate);
+
+        $room = Room::where('id', $id_room)
+                ->select('id', 'price')
+                ->first();
+        $totalPrice = $room->price * $days;
+
+        Invoices::create([
+            'id_user' => $id_user,
+            'id_room' => $id_room,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email,
+            'phone' => $phone,
+            'paymentMethod' => $paymentMethod,
+            'note' => $request->note,
+            'total'=> $totalPrice,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        RentalDetail::where('id_room', $id_room)
+        ->whereBetween('date', [$receive, $back])
+        ->update(['status' => 0]);
 
         return response()->json([
             'message' => 'Đặt phòng thành công',
             'total_price' => $totalPrice,
-            'rooms' => $availableRooms
         ]);
     }
 }
