@@ -73,7 +73,7 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::post('/create-blog',[BlogController::class,'store']);
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
     Route::put('/edit-blog/{id}',[BlogController::class,'update']);
-    Route::delete('/delete-blog',[BlogController::class,'destroy']);
+    Route::delete('/delete-blog/{id}',[BlogController::class,'destroy']);
     // Rental room detail
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
 });
