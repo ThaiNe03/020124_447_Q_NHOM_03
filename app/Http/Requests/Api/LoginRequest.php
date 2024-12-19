@@ -32,19 +32,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             'required'=>':attribute không được để trống',
-=======
-            'required'=>':attribute Không được để trống',
->>>>>>> 3de6771 (Initial commit)
-=======
-            'required'=>':attribute Không được để trống',
->>>>>>> bf66bb5 (Initial commit)
-=======
-            'required'=>':attribute Không được để trống',
->>>>>>> 58cd14f9de8448c5d8b0e96ffde43844c27589b7
             'email.email' => ':attribute sai định dạng'
         ];
     }

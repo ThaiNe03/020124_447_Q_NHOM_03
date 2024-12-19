@@ -16,14 +16,15 @@ use App\Models\Blog;
 
 // Main
 use App\Http\Controllers\Main\CustomerController;
+use App\Http\Controllers\Main\TransmitController;
 use App\Http\Controllers\RentalDetailController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
-Route::post('/admin/login',[UserController::class,'loginAdmin']);
 // Admin
+Route::post('/admin/login',[UserController::class,'loginAdmin']);
 Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('/logout',[UserController::class,'logout']);
     // Profile
@@ -72,21 +73,22 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-blog',[BlogController::class,'index']);
     Route::post('/create-blog',[BlogController::class,'store']);
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
-    Route::put('/edit-blog/{id}',[BlogController::class,'update']);
+    Route::post('/edit-blog/{id}',[BlogController::class,'update']);
     Route::delete('/delete-blog/{id}',[BlogController::class,'destroy']);
     // Rental room detail
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
 });
 
+
+// Main
 Route::post('/register', [CustomerController::class, 'register']);
 Route::post('/login', [CustomerController::class, 'login']);
 
-// Main
-Route::get('/list-room', [RoomController::class, 'getData']);
-Route::get('/edit-room/{id}',[RoomController::class,'edit']);
-Route::get('/list-service',[ServiceController::class,'index']);
-Route::get('/list-product',[ProductController::class,'index']);
-
+Route::get('/list-room', [TransmitController::class, 'listRoom']);
+Route::get('/detail-room/{id}',[TransmitController::class,'detailRoom']);
+Route::get('/list-service',[TransmitController::class,'listService']);
+Route::get('/list-product',[TransmitController::class,'listProduct']);
+Route::get('/list-blog',[TransmitController::class,'listBlog']);
 
 // Main sanctum
 Route::middleware('auth:sanctum')->group(function () {
